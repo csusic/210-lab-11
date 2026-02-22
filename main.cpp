@@ -23,21 +23,23 @@ void inputInventory(Inventory *);
 void displayInventory(Inventory *);
 
 int main() {
-    Inventory *color = new Inventory[INVENTORY_SIZE];
+    Inventory *data = new Inventory[INVENTORY_SIZE];
     
+    //input inventory function
     for (int i = 0; i < INVENTORY_SIZE; i++)
-        inputInventory(&color[i]);
+        inputInventory(&data[i]);
     
+    //display inventory function
     for (int i = 0; i < INVENTORY_SIZE; i++)
-        displayInventory(&color[i]);
+        displayInventory(&data[i]);
     
     return 0;
 }
 
+//input inventory function
 void inputInventory(Inventory * iptr) {
-    int counter = 1; //number counter
     //output header
-    cout << "Inventory #" << counter++ << ":\n";
+    cout << "Inventory" << endl;
     //input name
     cout << "Name: ";
     getline(cin, iptr->name);
@@ -47,7 +49,7 @@ void inputInventory(Inventory * iptr) {
     iptr->color = new int[COLOR_SIZE];
     //input color
     for (int i = 0; i < COLOR_SIZE; i++) {
-        cout << "Color #: " << counter++;
+        cout << "Color #" << i + 1 << " : ";
         cin >> iptr->color[i]; 
     }
     cout << endl;
@@ -56,17 +58,15 @@ void inputInventory(Inventory * iptr) {
 
 //display inventory function
 void displayInventory(Inventory * iptr) {
-    int counter = 1; //number counter
-    //output headers
+    //output header
     cout << "Inventory Summary" << endl; 
-    cout << "Inventory #" << counter++ << ":";
     //output name
     cout << "Name: " << iptr->name << endl;
     //output part number
     cout << "Part Number: " << iptr->partNum << endl;
     //output color
     for (int i = 0; i < COLOR_SIZE; i++) {
-        cout << "Color #: " << counter++;
+        cout << "Color #" << i + 1 << " : ";
         cout << iptr->color[i] << endl;
     }
 }
