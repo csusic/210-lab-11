@@ -1,20 +1,21 @@
 // COMSC-210 | Lab 11 | Christine Susic
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-//const size integers for inventory and color
-const int INVENTORY_SIZE = 3;
-const int COLOR_SIZE = 4;
+//const size integers for cars and color
+const int CAR_NUM = 3;
+const int COLOR_NUM = 4;
 
-//inventory struct to hold name, partNum, and color array
-struct Inventory {
+//car struct to hold name, vehicleNum, and color array
+struct Car {
     string name;
-    int partNum;
-    int* color = new int[INVENTORY_SIZE];
+    int vehicleNum;
+    int* color = new int[CAR_NUM];
     
     //delete memory and set pointer to null
-    ~Inventory() {
+    ~Car() {
         if (color) 
             delete [] color;
         color = nullptr;
@@ -22,37 +23,37 @@ struct Inventory {
 };
 
 //function prototypes
-void inputInventory(Inventory *);
-void displayInventory(Inventory *);
+void inputCar(Car *);
+void displayCar(Car *);
 
 int main() {
-    //pointer to inventory struct
-    Inventory *data = new Inventory[INVENTORY_SIZE];
+    //pointer to car struct
+    Car *data = new Car[CAR_NUM];
     
-    //input inventory function
-    for (int i = 0; i < INVENTORY_SIZE; i++)
-        inputInventory(&data[i]);
+    //input car struct
+    for (int i = 0; i < CAR_NUM; i++)
+        inputCar(&data[i]);
     
-    //display inventory function
-    for (int i = 0; i < INVENTORY_SIZE; i++)
-        displayInventory(&data[i]);
+    //display car struct
+    for (int i = 0; i < CAR_NUM; i++)
+        displayCar(&data[i]);
     
     return 0;
 }
 
-//input inventory function
-void inputInventory(Inventory * iptr) {
+//input car function
+void inputCar(Car * iptr) {
     //header
-    cout << "Inventory" << endl;
+    cout << "Car" << endl;
     //input name
     cout << "Name: ";
     getline(cin, iptr->name);
-    //input part number
-    cout << "Part Number: ";
-    cin >> iptr->partNum;
+    //input vechicle number
+    cout << "Vehicle Number: ";
+    cin >> iptr->vehicleNum;
     //input color array
-    iptr->color = new int[COLOR_SIZE];
-    for (int i = 0; i < COLOR_SIZE; i++) {
+    iptr->color = new int[COLOR_NUM];
+    for (int i = 0; i < COLOR_NUM; i++) {
         cout << "Color #" << i + 1 << " : ";
         cin >> iptr->color[i]; 
     }
@@ -60,16 +61,16 @@ void inputInventory(Inventory * iptr) {
     cin.ignore();
 }
 
-//display inventory function
-void displayInventory(Inventory * iptr) {
+//display car function
+void displayCar(Car * iptr) {
     //header
-    cout << "Inventory Summary" << endl; 
+    cout << "Car Summary" << endl; 
     //output name
     cout << "Name: " << iptr->name << endl;
-    //output part number
-    cout << "Part Number: " << iptr->partNum << endl;
+    //output vechicle number
+    cout << "Vehicle Number: " << iptr->vehicleNum << endl;
     //output color array
-    for (int i = 0; i < COLOR_SIZE; i++) {
+    for (int i = 0; i < COLOR_NUM; i++) {
         cout << "Color #" << i + 1 << " : ";
         cout << iptr->color[i] << endl;
     }
