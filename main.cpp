@@ -22,7 +22,20 @@ void inputInventory(Inventory *);
 void displayInventory(Inventory *);
 
 int main() {
-   
     
     return 0;
 }
+
+void inputInventory(Inventory * iptr) {
+    int counter = 0; //number counter
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Inventory #" << counter++ << ":";
+        cout << "Name: ";
+        getline(cin, iptr->name)
+        cout << "Part Number: ";
+        cin >> iptr->partNum;
+        sptr->quantity = new int[SIZE];
+        for 
+        cout << "Quantity: ";
+        cin >> iptr->quantity[i];
+    }
