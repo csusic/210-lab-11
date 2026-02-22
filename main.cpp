@@ -9,10 +9,20 @@ struct Inventory {
     string name;
     int partNum;
     int* quantity = new int[SIZE];
+    
+    ~Inventory() {
+        if (quantity) 
+            delete [] quantity;
+        quantity = nullptr;
+    }
 }
 
+//function prototypes
+void inputInventory(Inventory *);
+void displayInventory(Inventory *);
+
 int main() {
-    
+   
     
     return 0;
 }
